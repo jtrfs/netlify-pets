@@ -1,0 +1,379 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.top-section-wrapper {
+  background-color: #001d37;
+  padding-left: 16px;
+  padding-right: 16px;
+  overflow: hidden;
+}
+
+.top-section {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: #fff;
+  max-width: 1066px;
+}
+
+.actual-top-section {
+  position: relative;
+  z-index: 100;
+}
+
+.top-section h1 {
+  margin: 0;
+  font-size: 3.6rem;
+  line-height: 67px;
+  max-width: 350px;
+}
+
+.intro-text {
+  font-size: 1.25rem;
+  line-height: 169.3%;
+  margin: 1rem 0;
+  max-width: 435px;
+}
+
+.intro-buttons {
+  margin-bottom: 70px;
+}
+
+.our-btn {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  padding: 13px 25px;
+  text-decoration: none;
+  border-radius: 1000px;
+  color: #fff;
+  background-color: #475aff;
+  border: 2px solid #475aff;
+  transition: background-color 0.3s ease-out, border 0.3s ease-out, color 0.3s ease-out;
+}
+.our-btn:hover {
+  background-color: #1624a3;
+  border: 2px solid #1624a3;
+}
+
+.utility-mr {
+  margin-right: 10px;
+}
+
+.our-btn--outline {
+  background-color: transparent;
+  border: 2px solid #fff;
+}
+.our-btn--outline:hover {
+  background-color: #fff;
+  color: #475aff;
+  border: 2px solid #fff;
+}
+
+.intro-feature {
+  border: 1px solid rgb(255, 255, 255, 0.24);
+  padding: 33px 25px;
+}
+
+.intro-feature h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 31px;
+  margin-bottom: 7px;
+}
+
+.intro-feature p {
+  margin: 0;
+  font-size: 1.0625rem;
+}
+
+.intro-features {
+  display: grid;
+  gap: 16px;
+}
+
+/* media query */
+@media screen and (min-width: 580px) {
+  .intro-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 900px) {
+  .intro-features {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.circle-violet {
+  position: absolute;
+  top: 62px;
+  right: -392px;
+  width: 617px;
+  height: 617px;
+  background: #d660ff;
+  opacity: 0.85;
+  border-radius: 50%;
+  filter: blur(150px);
+}
+
+.circle-blue {
+  position: absolute;
+  top: -360px;
+  left: -121px;
+  width: 617px;
+  height: 617px;
+  background: #6079ff;
+  border-radius: 50%;
+  filter: blur(150px);
+}
+
+.page-section {
+  background-color: #fff;
+  padding: 70px 16px;
+}
+
+.page-section-inner {
+  max-width: 1066px;
+  margin: 0 auto;
+}
+
+.page-section-title {
+  margin: 0;
+  font-size: 4rem;
+  line-height: 1;
+}
+
+.pet-filter {
+  color: #9f9f9f;
+  font-size: 1.15rem;
+}
+
+.pet-filter button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.15rem;
+  color: #9f9f9f;
+  font-family: 'Source Sans 3', sans-serif;
+  cursor: pointer;
+}
+
+.pet-filter .active {
+  color: #475aff;
+  text-decoration: underline;
+}
+
+button:not(.active):hover {
+  color: #7d7d7d;
+}
+
+.site-footer p {
+  padding: 0 0 65px 0;
+  margin: 0;
+  color: #a6a6a6;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.site-footer .logout-text {
+  padding: 0;
+}
+
+.site-footer .logout-text button {
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+  color: #868686;
+}
+
+.list-of-pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  column-gap: 34px;
+  row-gap: 16px;
+}
+
+.pet-card {
+  display: grid;
+  grid-template-columns: 165px 1fr;
+  border: 1px solid #f3f3f3;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.pet-card-photo {
+  order: 0;
+}
+.pet-card-photo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pet-card-text {
+  order: 1;
+  padding: 18px 16px;
+}
+
+.pet-card-text h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.625rem;
+  font-weight: 600;
+}
+
+.pet-description {
+  font-size: 0.9rem;
+  color: #626262;
+  line-height: 150%;
+  margin-bottom: 1rem;
+}
+
+.pet-age {
+  color: #a2a2a2;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Media Queries */
+@media screen and (min-width: 600px) {
+  .page-section {
+    background-color: #fff;
+    padding: 130px 16px;
+  }
+  .intro-buttons {
+    margin-bottom: 129px;
+  }
+  .top-section h1 {
+    font-size: 6.25rem;
+    line-height: 97.3px;
+    max-width: 595px;
+  }
+  .top-section {
+    padding-top: 139px;
+    padding-bottom: 139px;
+  }
+  .page-section-title {
+    font-size: 5.31rem;
+  }
+  .pet-filter {
+    font-size: 1.375rem;
+  }
+
+  .pet-filter button {
+    font-size: 1.375rem;
+  }
+  .list-of-pets {
+    row-gap: 28px;
+  }
+  .pet-card-text {
+    padding: 21px 29px;
+  }
+  .pet-description {
+    font-size: 1rem;
+  }
+}
+
+/* Admin Page CSS */
+.form-field {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin: 0 0 16px 0;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  font-family: inherit;
+}
+
+.mb-big {
+  margin-bottom: 25px;
+}
+
+.small-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #999;
+  position: relative;
+  z-index: 3;
+}
+
+.action-btn {
+  text-decoration: none;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  color: #475aff;
+  padding: 0;
+  margin: 0 10px 0 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.action-btn:last-child {
+  margin-right: 0;
+}
+
+.action-buttons .action-btn:hover {
+  color: #1e2670;
+  text-decoration: underline;
+}
+
+.add-pet-btn {
+  text-decoration: none;
+  display: inline-block;
+  padding: 13px 18px;
+  margin: 0 0 30px 0;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  color: #fff;
+  background-color: rgb(16, 111, 16);
+  transition: background-color 0.3s ease-in;
+}
+
+.add-pet-btn svg {
+  margin-right: 5px;
+  position: relative;
+  top: 3px;
+}
+
+.add-pet-btn:hover {
+  background-color: rgb(13, 78, 13);
+}
+
+.still-loading .pet-card-photo,
+.still-loading .pet-card-text {
+  opacity: 0;
+}
+
+.still-loading .pet-card {
+  background-color: #b9b9b9;
+}
+
+@keyframes loadingflashing {
+  0% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.4;
+  }
+}
+
+.still-loading {
+  animation: 0.6s loadingflashing ease-in-out alternate infinite;
+}
