@@ -1,11 +1,10 @@
 const {MongoClient} = require('mongodb');
-const cookie = require('cookie');
+const isAdmin = require('../../our-library/isAdmin');
 
 const handler = async event => {
-  console.log(event.headers.cookie);
-  const incomingCookie = cookie.parse(event.headers.cookie || '');
+  // console.log('this is event: ', event);
 
-  if (incomingCookie?.petadoption === 'klaseikaklaienaienclaija847591973892589156llslshgfsls') {
+  if (isAdmin(event)) {
     const client = new MongoClient(process.env.CONNECTIONSTRING);
     await client.connect();
     const pets = await client.db().collection('pets').find().toArray();
@@ -25,7 +24,7 @@ const handler = async event => {
   return {
     statusCode: 200,
     headers: {
-      'Content-Type': 'text/json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({success: false}),
   };
