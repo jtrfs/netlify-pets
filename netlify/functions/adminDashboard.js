@@ -1,12 +1,10 @@
-const {MongoClient} = require('mongodb');
+const escape = require('escape-html');
+const getDbClient = require('../../our-library/getDbClient');
 const isAdmin = require('../../our-library/isAdmin');
 
 const handler = async event => {
-  // console.log('this is event: ', event);
-
   if (isAdmin(event)) {
-    const client = new MongoClient(process.env.CONNECTIONSTRING);
-    await client.connect();
+    const client = await getDbClient();
     const pets = await client.db().collection('pets').find().toArray();
     await client.close();
 
@@ -37,8 +35,8 @@ function generateHTML(pets) {
       return `
     <div class="pet-card">
       <div class="pet-card-text">
-        <h3 class="pet-name">${pet.name}</h3>
-        <p class="pet-description">${pet.description}</p>
+        <h3 class="pet-name">${escape(pet.name)}</h3>
+        <p class="pet-description">${escape(pet.description)}</p>
         <div class="action-buttons">
           <a class="action-btn" href="#">Edit</a>
           <button class="action-btn">Delete</button>
@@ -46,8 +44,8 @@ function generateHTML(pets) {
       </div>
       <div class="pet-card-photo">
         <img src="${
-          pet.species === 'dog' ? '/images/fallback-dog.jpg' : '/images/fallback-cat.jpg'
-        }" alt="A ${pet.species} named ${pet.name}">
+          escape(pet.species) === 'dog' ? '/images/fallback-dog.jpg' : '/images/fallback-cat.jpg'
+        }" alt="A ${escape(pet.species)} named ${escape(pet.name)}">
       </div>
     </div>
     `;

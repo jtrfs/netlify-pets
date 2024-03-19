@@ -1,10 +1,7 @@
-const {MongoClient} = require('mongodb');
+const getDbClient = require('../../our-library/getDbClient');
 
 const handler = async () => {
-  const client = new MongoClient(process.env.CONNECTIONSTRING);
-
-  await client.connect();
-  console.log('MongoDB connected');
+  const client = await getDbClient();
   const pets = await client.db().collection('pets').find().toArray();
   await client.close();
 
