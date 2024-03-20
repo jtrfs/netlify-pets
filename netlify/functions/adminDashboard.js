@@ -39,7 +39,7 @@ function generateHTML(pets) {
         <p class="pet-description">${escape(pet.description)}</p>
         <div class="action-buttons">
           <a class="action-btn" href="/admin/edit-pet?id=${pet._id}">Edit</a>
-          <button class="action-btn">Delete</button>
+          <button onClick="handleDelete('${pet._id}', this)" class="action-btn">Delete</button>
         </div>
       </div>
       <div class="pet-card-photo">

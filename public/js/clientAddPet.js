@@ -10,6 +10,8 @@ addPetForm.addEventListener('submit', async e => {
     description: document.querySelector('#description').value,
   };
 
+  document.querySelector('#add-new-pet-form').classList.add('form-is-loading');
+
   const ourPromise = await fetch('/.netlify/functions/addPet', {
     method: 'POST',
     headers: {

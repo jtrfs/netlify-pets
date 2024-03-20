@@ -23,6 +23,9 @@ async function getEditPet() {
   document.querySelector('#birthYear').value = pet.birthYear;
   document.querySelector('#species').value = pet.species;
   document.querySelector('#description').value = pet.description;
+
+  document.querySelector('#edit-pet-form').classList.remove('form-is-loading');
+  document.querySelector('#name').focus();
 }
 
 getEditPet();
@@ -38,6 +41,8 @@ document.querySelector('#edit-pet-form').addEventListener('submit', async e => {
     species: document.querySelector('#species').value,
     description: document.querySelector('#description').value,
   };
+
+  document.querySelector('#edit-pet-form').classList.add('form-is-loading');
 
   const ourPromise = await fetch('/.netlify/functions/saveChanges', {
     method: 'POST',
