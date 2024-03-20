@@ -1,6 +1,7 @@
 const getDbClient = require('../../our-library/getDbClient');
 const sanitizeHtml = require('sanitize-html');
 const isAdmin = require('../../our-library/isAdmin');
+const {ObjectId} = require('mongodb');
 
 function cleanUp(x) {
   return sanitizeHtml(x, {
@@ -17,7 +18,6 @@ const handler = async event => {
   if (typeof body.description != 'string') {
     body.description = '';
   }
-
   const pet = {
     name: cleanUp(body.name),
     species: cleanUp(body.species),
@@ -33,20 +33,26 @@ const handler = async event => {
   }
 
   if (isAdmin(event)) {
-    // saving into the db
+    if (!ObjectId.isValid(body.id)) {
+      return {
+        statusCode: 200,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({success: false}),
+      };
+    }
     const client = await getDbClient();
-    await client.db().collection('pets').insertOne(pet);
+    await client
+      .db()
+      .collection('pets')
+      .findOneAndUpdate({_id: ObjectId.createFromHexString(body.id)}, {$set: pet});
     await client.close();
 
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({success: true}),
     };
   }
-  // no permission
   return {
     statusCode: 200,
     headers: {
@@ -55,5 +61,4 @@ const handler = async event => {
     body: JSON.stringify({success: false}),
   };
 };
-
 module.exports = {handler};
